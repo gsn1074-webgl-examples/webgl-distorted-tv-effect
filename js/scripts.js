@@ -22,16 +22,23 @@ function init() {
     camera.position.z = 1000;
     scene = new THREE.Scene();
 
-    //init video texture
+    //start create/add background image
+
     var bgTexture = textureLoader.load('./img/dark3.jpg');
+
     bgMaterial = new THREE.MeshBasicMaterial({
         map: bgTexture
     });
 
-    //Add video plane
     var planeGeometry = new THREE.PlaneGeometry(1920, 1080, 1, 1);
     var plane = new THREE.Mesh(planeGeometry, bgMaterial);
+
     scene.add(plane);
+
+    //end create/add background image
+
+    //position and scale background image 
+
     plane.z = 0;
     plane.scale.x = plane.scale.y = 1.45;
 
@@ -63,8 +70,8 @@ function init() {
 
     window.addEventListener('resize', onResize, false);
     document.addEventListener('mousemove', onDocumentMouseMove, false);
+    
     onResize();
-
 }
 
 function onDocumentMouseMove(event) {
